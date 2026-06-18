@@ -13,7 +13,6 @@
     "resolveJsonModule": true,
     "outDir": "./dist",
     "rootDir": "./",
-    "baseUrl": "./",
     "paths": {
       "@common/*": ["apps/backend/src/common/*"],
       "@modules/*": ["apps/backend/src/modules/*"],
