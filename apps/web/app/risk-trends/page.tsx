@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 
@@ -20,14 +20,16 @@ export default function RiskTrendsDashboard() {
       <h1 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>
         Risk Trends Dashboard
       </h1>
-      
+
       {/* Time Filters */}
       <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <label htmlFor="timeFilter" style={{ fontWeight: '500' }}>Time Range: </label>
-        <select 
+        <label htmlFor="timeFilter" style={{ fontWeight: '500' }}>
+          Time Range:{' '}
+        </label>
+        <select
           id="timeFilter"
-          value={timeFilter} 
-          onChange={(e) => setTimeFilter(e.target.value)}
+          value={timeFilter}
+          onChange={e => setTimeFilter(e.target.value)}
           style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
         >
           <option value="7d">Last 7 Days</option>
@@ -37,40 +39,103 @@ export default function RiskTrendsDashboard() {
         </select>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '24px',
+        }}
+      >
         {/* Historical Charts */}
-        <div style={{ border: '1px solid #eaeaea', padding: '20px', borderRadius: '8px', backgroundColor: '#fff' }}>
+        <div
+          style={{
+            border: '1px solid #eaeaea',
+            padding: '20px',
+            borderRadius: '8px',
+            backgroundColor: '#fff',
+          }}
+        >
           <h2 style={{ fontSize: '18px', marginBottom: '20px' }}>Historical Risk Chart</h2>
           <div style={{ height: '200px', display: 'flex', alignItems: 'flex-end', gap: '12px' }}>
             {historicalData.map((data, i) => (
-              <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%' }}>
-                <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', width: '100%', marginBottom: '8px' }}>
-                  <div style={{ 
-                    width: '100%', 
-                    backgroundColor: data.riskScore > 60 ? '#ef4444' : data.riskScore > 40 ? '#eab308' : '#22c55e', 
-                    height: `${data.riskScore}%`,
-                    borderRadius: '4px 4px 0 0',
-                    transition: 'height 0.3s ease'
-                  }} title={`Risk Score: ${data.riskScore}`} />
+              <div
+                key={i}
+                style={{
+                  flex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  height: '100%',
+                }}
+              >
+                <div
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    width: '100%',
+                    marginBottom: '8px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '100%',
+                      backgroundColor:
+                        data.riskScore > 60
+                          ? '#ef4444'
+                          : data.riskScore > 40
+                            ? '#eab308'
+                            : '#22c55e',
+                      height: `${data.riskScore}%`,
+                      borderRadius: '4px 4px 0 0',
+                      transition: 'height 0.3s ease',
+                    }}
+                    title={`Risk Score: ${data.riskScore}`}
+                  />
                 </div>
-                <span style={{ fontSize: '12px', color: '#666' }}>{new Date(data.date).toLocaleString('default', { month: 'short' })}</span>
+                <span style={{ fontSize: '12px', color: '#666' }}>
+                  {new Date(data.date).toLocaleString('default', { month: 'short' })}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Risk Comparisons */}
-        <div style={{ border: '1px solid #eaeaea', padding: '20px', borderRadius: '8px', backgroundColor: '#fff' }}>
+        <div
+          style={{
+            border: '1px solid #eaeaea',
+            padding: '20px',
+            borderRadius: '8px',
+            backgroundColor: '#fff',
+          }}
+        >
           <h2 style={{ fontSize: '18px', marginBottom: '20px' }}>Risk Comparisons</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '12px', borderBottom: '1px solid #f0f0f0' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                paddingBottom: '12px',
+                borderBottom: '1px solid #f0f0f0',
+              }}
+            >
               <span style={{ fontWeight: '500' }}>Engineering</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontWeight: 'bold' }}>45</span>
                 <span style={{ color: '#22c55e', fontSize: '14px' }}>↓ 10%</span>
               </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingBottom: '12px', borderBottom: '1px solid #f0f0f0' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                paddingBottom: '12px',
+                borderBottom: '1px solid #f0f0f0',
+              }}
+            >
               <span style={{ fontWeight: '500' }}>Sales</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontWeight: 'bold' }}>72</span>
